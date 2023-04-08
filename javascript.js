@@ -1,6 +1,5 @@
 const MAX_GRIDS = 100;
 let gridNumber = 16;
-let grids = gridNumber ** 2;
 let gridArea;
 
 // Need this value to remove existing nodes
@@ -15,7 +14,7 @@ function createGrids() {
         console.log(i);
         const grid = document.createElement('div');
         grid.classList.add("grid"); 
-        // grid.textContent = i+1;
+        grid.textContent = i+1;
         gridContainer.appendChild(grid);
     }
     
@@ -31,10 +30,11 @@ function removeGrids(number) {
 function calculateDivArea() {
     gridArea = (26 * gridNumber) + gridNumber;
 }
+
 const changeButton = document.querySelector('#change-grids-button');
 
 changeButton.addEventListener('click', () => {
-    temp = gridNumber;
+    temp = gridNumber; // Create a temp value to delete exiting nodest
     gridNumber = Number(prompt("Enter the number of grids"));
     // Checking if the values acceptable
     if(gridNumber < 0) {
@@ -52,9 +52,6 @@ changeButton.addEventListener('click', () => {
 
     removeGrids(temp);
     calculateDivArea();
-    // createGrids(numberOfGrids);
-    
-    // If everything is acceptable remove elements
     
     gridContainer.style.width = gridArea + "px";
     gridContainer.style.height = gridArea + "px";
