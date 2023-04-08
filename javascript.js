@@ -14,12 +14,12 @@ function createGrids() {
         console.log(i);
         const grid = document.createElement('div');
         grid.classList.add("grid"); 
-        grid.textContent = i+1;
         gridContainer.appendChild(grid);
     }
     
 }
-createGrids(grids);
+// Runs to create a default grid 16 x 16
+createGrids(gridNumber);
 
 function removeGrids(number) {
     for(let i = 0; i < number ** 2; i++) {
