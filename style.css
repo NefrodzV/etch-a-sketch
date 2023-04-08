@@ -5,19 +5,26 @@ body {
     justify-content: center;
 }
 .grid-container {
-    background-color: aqua;
+    padding: 16px;
+    background-color: black;
     max-width: 960px;
+    margin: 0;
     display: flex;
-    gap : 16px;
+    justify-content: center;
+    align-items: center;
+    gap : 1rem;
     flex-direction: row;
     flex-wrap: wrap;
+    
 }
 
 .grid {
+    
     background-color: white;
-    padding: 5rem;
+    width: 4.5%;
+    padding-bottom: 4.5%;
     margin: 0;
-    border: 2px solid black;
+    /* border: 1px solid black; */
 }
 
 button {
