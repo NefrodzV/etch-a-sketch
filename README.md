@@ -1,1 +1,2 @@
 # sketch-pad
+This will be a project about making something like a sketchpad we will be making a 16x16 grid and will be able to hover over them. We can also input the number of grid we want and it will create them.
