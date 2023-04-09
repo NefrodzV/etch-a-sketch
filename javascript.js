@@ -4,11 +4,21 @@ let gridArea;
 
 // Need this value to remove existing nodes
 let temp = 0;
-
+const body = document.querySelector('body');
+// body.addEventListener('click', () =>{
+//     console.log("body clicked");
+// })
 const gridContainer = document.querySelector('.grid-container');
 gridContainer.style.cssText = 
 `grid-template-columns : repeat(${gridNumber}, 1fr) ;
  grid-template-rows: repeat(${gridNumber}, 1fr)`;
+
+function addListener(element) {
+    element.addEventListener('mouseover', () => {
+    console.log('grid clicked');
+    element.style.cssText = `background-color: rgb(${getRandom()},${getRandom()},${getRandom()})`;
+    });
+}
 
 function createGrids() {
     
@@ -18,24 +28,33 @@ function createGrids() {
         const grid = document.createElement('div');
         // grid.textContent = i +1;
         grid.classList.add("grid"); 
+        addListener(grid);
         gridContainer.appendChild(grid);
     }
     
 }
+
 // Runs to create a default grid 16 x 16
 createGrids(gridNumber);
+
+function getRandom() {
+    return Math.floor(Math.random() * 256);
+}
+
+
+
 
 function removeGrids(number) {
     for(let i = 0; i < number ** 2; i++) {
         const gridToRemove = document.querySelector('.grid')
+        // grid.style.css
         gridToRemove.remove();
     }
 }
 function updateGrid() {
     gridContainer.style.cssText = 
     `grid-template-columns : repeat(${gridNumber}, 1fr) ;
-     grid-template-rows: repeat(${gridNumber}, 1fr)`;
-    // gridArea = (26* gridNumber) + gridNumber;
+     grid-template-rows: repeat(${gridNumber}, 1fr)`;    
 }
 
 const changeButton = document.querySelector('#change-grids-button');
