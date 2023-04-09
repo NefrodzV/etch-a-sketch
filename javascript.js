@@ -1,24 +1,30 @@
 const MAX_GRIDS = 100;
 let gridNumber = 16;
 let gridArea;
-
+let flag;
 // Need this value to remove existing nodes
 let temp = 0;
-const body = document.querySelector('body');
-body.addEventListener('mousedown', () =>{
-    console.log("body clicked");
-})
-
+window.onmouseup = () => {
+    flag = false;
+};
 const gridContainer = document.querySelector('.grid-container');
 gridContainer.style.cssText = 
 `grid-template-columns : repeat(${gridNumber}, 1fr) ;
  grid-template-rows: repeat(${gridNumber}, 1fr)`;
-
+gridContainer.setAttribute("cursor","default");
 function addListener(element) {
     element.addEventListener('mouseover', () => {
-      
-    element.style.cssText = `background-color: rgb(${getRandom()},${getRandom()},${getRandom()})`;
+      if(flag == true) {
+            element.style.cssText = `background-color: rgb(${getRandom()},${getRandom()},${getRandom()})`;
+        }
     });
+    element.addEventListener('mousedown',()=> {
+        flag = true;
+        element.style.cssText = `background-color: rgb(${getRandom()},${getRandom()},${getRandom()})`;
+    });
+    element.addEventListener('mouseup', ()=> {
+        flag= false;
+    })
 }
 
 function createGrids() {
@@ -29,6 +35,7 @@ function createGrids() {
         const grid = document.createElement('div');
         // grid.textContent = i +1;
         grid.classList.add("grid"); 
+        grid.setAttribute("draggable",false);
         addListener(grid);
         gridContainer.appendChild(grid);
     }
