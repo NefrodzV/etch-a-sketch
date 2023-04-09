@@ -5,9 +5,10 @@ let gridArea;
 // Need this value to remove existing nodes
 let temp = 0;
 const body = document.querySelector('body');
-// body.addEventListener('click', () =>{
-//     console.log("body clicked");
-// })
+body.addEventListener('mousedown', () =>{
+    console.log("body clicked");
+})
+
 const gridContainer = document.querySelector('.grid-container');
 gridContainer.style.cssText = 
 `grid-template-columns : repeat(${gridNumber}, 1fr) ;
@@ -15,7 +16,7 @@ gridContainer.style.cssText =
 
 function addListener(element) {
     element.addEventListener('mouseover', () => {
-    console.log('grid clicked');
+      
     element.style.cssText = `background-color: rgb(${getRandom()},${getRandom()},${getRandom()})`;
     });
 }
@@ -41,13 +42,9 @@ function getRandom() {
     return Math.floor(Math.random() * 256);
 }
 
-
-
-
 function removeGrids(number) {
     for(let i = 0; i < number ** 2; i++) {
         const gridToRemove = document.querySelector('.grid')
-        // grid.style.css
         gridToRemove.remove();
     }
 }
