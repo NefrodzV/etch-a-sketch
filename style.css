@@ -12,12 +12,8 @@ body {
     margin: 0;
     padding: 0;
     display: grid;
-    /* grid-template-columns: repeat(100, 1fr);
-    grid-template-rows: repeat(100, 1fr); */
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
     
 }
 
@@ -27,7 +23,9 @@ body {
     height: 100%;
     border: 1px solid black;
 }
-
+.grid:hover {
+    background-color: red;
+}
 button {
     padding: 16px;
     margin-bottom: 50px;
