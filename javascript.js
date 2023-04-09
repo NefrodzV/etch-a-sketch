@@ -6,6 +6,9 @@ let gridArea;
 let temp = 0;
 
 const gridContainer = document.querySelector('.grid-container');
+gridContainer.style.cssText = 
+`grid-template-columns : repeat(${gridNumber}, 1fr) ;
+ grid-template-rows: repeat(${gridNumber}, 1fr)`;
 
 function createGrids() {
     
@@ -13,6 +16,7 @@ function createGrids() {
     for(let i = 0; i < gridNumber ** 2; i++) {
         console.log(i);
         const grid = document.createElement('div');
+        // grid.textContent = i +1;
         grid.classList.add("grid"); 
         gridContainer.appendChild(grid);
     }
@@ -27,8 +31,11 @@ function removeGrids(number) {
         gridToRemove.remove();
     }
 }
-function calculateDivArea() {
-    gridArea = (26 * gridNumber) + gridNumber;
+function updateGrid() {
+    gridContainer.style.cssText = 
+    `grid-template-columns : repeat(${gridNumber}, 1fr) ;
+     grid-template-rows: repeat(${gridNumber}, 1fr)`;
+    // gridArea = (26* gridNumber) + gridNumber;
 }
 
 const changeButton = document.querySelector('#change-grids-button');
@@ -37,8 +44,8 @@ changeButton.addEventListener('click', () => {
     temp = gridNumber; // Create a temp value to delete exiting nodest
     gridNumber = Number(prompt("Enter the number of grids"));
     // Checking if the values acceptable
-    if(gridNumber < 0) {
-        alert("Cannot be less than 0");
+    if(gridNumber < 2) {
+        alert("Cannot be less than 2");
         return;
     }
     if(!Number.isInteger(gridNumber)) {
@@ -51,11 +58,7 @@ changeButton.addEventListener('click', () => {
     }
 
     removeGrids(temp);
-    calculateDivArea();
-    
-    gridContainer.style.width = gridArea + "px";
-    gridContainer.style.height = gridArea + "px";
-
+    updateGrid();
     createGrids();
 });
 
